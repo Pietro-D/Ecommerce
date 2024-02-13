@@ -1,0 +1,34 @@
+<mat-toolbar class="bar">
+    <span class="name"> E-commerce</span>
+
+    <div class="searchBox">
+        <input class="searchInput"type="text" name="" placeholder="Search" #query>
+        <button class="searchButton" href="#" (click)="search(query.value)">
+            <i class="material-icons">
+                search
+            </i>
+        </button>
+    </div>
+
+    <button class="loginButton">
+        <i class="material-icons">
+            login
+        </i>
+        <div class="textLogin">Login</div>
+    </button>
+        
+</mat-toolbar>
+
+<div class=categories *ngIf="showCategories">
+    <mat-grid-list cols="3">
+        <mat-grid-tile *ngFor="let category of categories">
+            <div class="category">
+                <img src="{{this.imageUrl+category.icon_url}}" width="300" height="200">
+                <button (click)="redirectToProductsList(category.name)" class="categoryButton">
+                    {{category.name}}
+                </button>
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,25 @@
+spring:
+    config:
+      import: file:env.properties
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/${DB_NAME}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+        
+    jpa:
+      database-platform: org.hibernate.dialect.MySQLDialect
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+
+server:
+  port: 2024
+  servlet:
+    context-path: /ecommerce
+    
+
+jwtCookieName : ecommerce
+jwtSecret : ${JWT_SECRET}
+jwtExpirationMs : 86400000
+

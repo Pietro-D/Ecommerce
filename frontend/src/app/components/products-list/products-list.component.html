@@ -1,0 +1,37 @@
+<mat-grid-list class="products" cols="1" rowHeight="800px">
+    <mat-grid-tile class="card" *ngFor="let product of products">
+        <div class="wrapper">
+          <div class="product-img">
+            <img src="{{this.imageUrl+this.product.image}}" height="600" width="400">
+          </div>
+          <div class="product-info">
+            <div class="product-text">
+              <h1>{{product.name}}</h1>
+              <p style="text-align:justify">{{product.description}}</p>
+              <h2> quantity: {{product.quantity}}</h2>
+            </div>
+            <div class="product-price-btn">
+              <p>
+                <ng-container *ngIf="product.discountPrice==null; else elseTemplate">
+                  <span>{{product.price}}$</span>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <span  style="text-decoration: line-through;">{{product.price}}$</span>
+                  &nbsp;
+                  <span>{{product.discountPrice}}$</span>
+                </ng-template>
+              </p>
+              <button type="button">Add in chart</button>
+            </div>
+          </div>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-paginator [length]="totalProducts" [pageSize]="pageSize" showFirstLastButtons (page)="onLoadMore($event)" ></mat-paginator>
+
+
+
+
+
+
+
